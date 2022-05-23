@@ -1,0 +1,178 @@
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { useLocation, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import Footer from '../shared/Footer';
+import axios from 'axios';
+
+const Purchase = () => {
+    const location = useLocation();
+    // console.log('my location is', location.state.value)
+    const { id } = useParams();
+    
+    const [tools, setTools] = useState([]);
+    const [user, loading] = useAuthState(auth);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const fetchfunction = async () =>{
+        
+        console.log('my id is',id)
+        const myVar = await axios.get(`http://localhost:5000/purchase/${id}`, {
+                method: "GET",
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                },
+            })
+            
+             console.log("what i am",myVar)
+    }
+
+    useEffect(() => {
+    fetchfunction()
+    // .then(res => res.json())
+    // .then(data => setTools(data))  
+        
+        // const myVar = fetch(`http://localhost:5000/purchase/${id}`, {
+        //         method: "GET",
+        //         headers: {
+        //             authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        //         },
+        //     })
+           
+                // .then(res => res.json())
+                // .then(data => setTools(data))                
+    }, [tools]);
+   
+    const handlePurchase = (data) => {
+        const purchase = {
+            toolId: tools._id,
+            toolName: tools.toolName,
+            price: tools.price,
+            buyer: user.email,
+            buyerName: user.displayName,
+            phone: data.phone,
+            address: data.address,
+            orderQuantity: data.orderQuantity,
+        }
+
+        fetch('http://localhost:5000/purchase', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(purchase)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.success);
+                if (data.success) {
+                    toast(`Your order for ${tools.toolName} is successful`);
+                    reset();
+                }
+                else {
+                    toast.error(`Your order for ${tools.toolName} has failed!`)
+                }
+
+            })
+    }
+
+    return (
+        <div>
+            <div className="flex justify-center items-center">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div className="text-center card-body lg:text-left">
+                        <h1 className="text-5xl font-bold">Purchase Now</h1>
+                        <h2 className="text-2xl">{tools.toolName}</h2>
+                        <h2 className="text-2xl">{user.displayName}</h2>
+                        <h2 className="text-xl text-primary">{user.email}</h2>
+                        <h2 className='text-xl'>Price: ${tools.price}</h2>
+                        <h2>Available: {tools.available}</h2>
+                        <h2>Minimum Order: {tools.minOrder}</h2>
+                        <p className='w-52'>{tools.desc}</p>
+                    </div>
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <div className="card-body">
+                            <figure><img src={tools.img} alt="Shoes" /></figure>
+                            <form onSubmit={handleSubmit(handlePurchase)}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name='email'
+                                        value={user.email}
+                                        readOnly
+                                        className="input input-bordered"
+                                    />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Order Quantity</span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        name='orderQuantity'
+                                        placeholder="Order Quantity"
+                                        className="input input-bordered"
+                                        {...register("orderQuantity",
+                                            { required: true, min: 20, max: tools?.available })}
+                                    />
+                                    <p className='text-red-500 text-sm'>
+                                        {errors.orderQuantity?.type === 'required' && "Order Quantity is required"}
+                                    </p>
+                                    <p className='text-red-500 text-sm'>
+                                        {errors.orderQuantity?.type === 'min' && `Order Quantity Must Be More Than ${tools.minOrder}`}
+                                    </p>
+                                    <p className='text-red-500 text-sm'>
+                                        {errors.orderQuantity?.type === 'max' && `Order Quantity Can Not Be More Than ${tools.available}`}
+                                    </p>
+
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Address</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name='address'
+                                        placeholder="Your Address"
+                                        className="input input-bordered"
+                                        {...register("address", { required: true })}
+                                    />
+                                    <p className='text-red-500 text-sm'>
+                                        {errors.address?.type === 'required' && "Address is required"}
+                                    </p>
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Phone</span>
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        name='phone'
+                                        placeholder="Your Phone"
+                                        className="input input-bordered"
+                                        {...register("phone", { required: true })}
+                                    />
+                                    <p className='text-red-500 text-sm'>
+                                        {errors.phone?.type === 'required' && "Phone is required"}
+                                    </p>
+                                </div>
+
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary">Purchase</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Footer></Footer>
+        </div>
+    );
+};
+
+export default Purchase;

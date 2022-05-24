@@ -12,7 +12,7 @@ const DeletingConfirmOrderModal = ({ deleteOrder }) => {
             }
         })
             .then(res => res.json())
-            .then(data => toast.error("Successfully Deleted"))
+            .then(data => toast.success("Successfully Deleted"))
     }
     return (
         <div>

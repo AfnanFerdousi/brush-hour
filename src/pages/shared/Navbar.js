@@ -49,7 +49,7 @@ const Navbar = ({ children }) => {
                                         ?
                                         <button className='btn btn-ghost rounded-lg' onClick={logout}>SIGN OUT</button>
                                         :
-                                        <Link to='/login' className='btn btn-ghost rounded-lg'>LOGIN</Link>
+                                        <Link to='/signup' className='btn btn-ghost rounded-lg'>SIGN UP</Link>
                                 }
                             </li>
                             <li>

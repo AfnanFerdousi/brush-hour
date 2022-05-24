@@ -10,10 +10,11 @@ const OrderRow = ({ order, index, setDeleteOrder }) => {
             <td>{order.orderAmount}</td>
             <td>{order.buyerAddress}</td>
             <td>{order.productName}</td>
-            <td>{(order.price && !order.paid) ? <>
+            <td>{(!order.paid) ? <>
                 <Link to={`/dashboard/payment/${order._id}`} className="btn btn-success btn-sm">Pay</Link>
                 <label htmlFor="deleting-confirm-2" className="btn btn-sm bg-red-500 ml-2 border-0" 
-                onClick={() => setDeleteOrder(order)} >Cancel</label></> : <span className="text-success">Paid</span>
+                onClick={() => setDeleteOrder(order)} >Cancel</label></> 
+                : <span className="text-success">Paid</span>
             }
             </td>
         </tr >

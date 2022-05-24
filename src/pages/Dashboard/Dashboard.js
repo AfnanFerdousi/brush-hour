@@ -24,7 +24,7 @@ const Dashboard = () => {
                             ?
                             <>
                                 <li><Link  to="/dashboard/orders">My Orders</Link></li>
-                                <li><Link to="/dashboard/review">My Review</Link></li>
+                                <li><Link to="/dashboard/review">Add a Review</Link></li>
                             </>
                             :
                             <>

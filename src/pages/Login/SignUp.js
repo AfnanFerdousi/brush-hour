@@ -31,7 +31,7 @@ const SignUp = () => {
     }
 
     if (token) {
-        navigate('/')       
+        navigate('/')
     }
 
     const onSubmit = async data => {
@@ -40,18 +40,18 @@ const SignUp = () => {
     };
 
     return (
-        <div className="h-screen bg-purple-100 mt-10 flex justify-center items-center">
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="mt-6 bg-purple-100 flex flex-cols justify-center items-center">
+            <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
                 <div className="card-body">
                     <h2 className="text-2xl font-bold text-center">Sign Up</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* name */}
 
-                        <div className="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-md">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="Your Name" className="input input-bordered w-full max-w-xs" {...register("name", {
+                            <input type="text" placeholder="Your Name" className="input input-bordered w-full max-w-md" {...register("name", {
                                 required: {
                                     value: true,
                                     message: 'Name is required'
@@ -65,11 +65,11 @@ const SignUp = () => {
                         </div>
 
                         {/* email */}
-                        <div className="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-md">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="Your Email" className="input input-bordered w-full max-w-xs" {...register("email", {
+                            <input type="email" placeholder="Your Email" className="input input-bordered w-full max-w-md" {...register("email", {
                                 required: {
                                     value: true,
                                     message: 'Email is required'
@@ -90,11 +90,11 @@ const SignUp = () => {
                         </div>
 
                         {/* password */}
-                        <div className="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-md">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" {...register("password", {
+                            <input type="password" placeholder="Your Password" className="input input-bordered w-full max-w-md" {...register("password", {
                                 required: {
                                     value: true,
                                     message: 'Password is required'
@@ -113,16 +113,13 @@ const SignUp = () => {
                                     <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
+
+
+
                         {signUpError}
-                        <input className='btn w-full max-w-xs' value="SIGN UP" type="submit" />
+                        <input className='btn w-full max-w-md' value="SIGN UP" type="submit" />
                     </form>
                     <p><small>Already have an account? <Link className='text-secondary font-bold' to='/login'>Please Login</Link></small></p>
-                    <div className="divider">OR</div>
-                    <button
-                        onClick={() => signInWithGoogle()}
-                        className="btn btn-outline uppercase"
-                    >Continue With Google
-                    </button>
                 </div>
             </div>
         </div>

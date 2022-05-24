@@ -49,7 +49,7 @@ const Purchase = () => {
                 if (data.success) {
                     toast(`Your order for ${tool.toolName} is successful`);
                     reset();
-                    navigate('/dashboard/orders');
+                    navigate(`/dashboard/orders`)
                 }
                 else {
                     toast.error(`Your order for ${tool.toolName} has failed!`)

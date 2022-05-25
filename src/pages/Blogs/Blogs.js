@@ -16,14 +16,16 @@ const Blogs = () => {
 
                 <div className='lg:ml-20 lg:mr-20 card-body mt-4'>
                     <h2 className='text-2xl text-purple-700 '><span className='text-3xl font-bold'>#</span>What are the different ways to manage a state in a React application?</h2>
-                    <p className='mt-3'>There are many ways to manage a state. The 4 main types of states are as follows-
-                        <ul className='text-purple-700 md:ml-20 lg:ml-20'>
+                    <div>
+                    <p className='mt-3'>There are many ways to manage a state. The 4 main types of states are as follows-                        
+                    </p>
+                    <ul className='text-purple-700 md:ml-20 lg:ml-20'>
                             <li><span className='font-bold text-xl'>></span> Local State</li>
                             <li><span className='font-bold text-xl'>></span> Global State</li>
                             <li><span className='font-bold text-xl'>></span> Server State</li>
                             <li><span className='font-bold text-xl'>></span> URL State</li>
                         </ul>
-                    </p>
+                    </div>
                 </div>
 
                 <div className='lg:ml-20 lg:mr-20 card-body mt-4'>

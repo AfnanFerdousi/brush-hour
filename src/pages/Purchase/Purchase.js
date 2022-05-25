@@ -43,7 +43,7 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 // console.log(data.success);
                 // console.log("data testing",data);
                 if (data.success) {

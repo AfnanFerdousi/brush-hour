@@ -31,7 +31,7 @@ const Purchase = () => {
             paid: false,
             productId: tool._id,
             productName: tool.toolName,
-            price: tool.price,
+            price: Number(tool.price * data.orderAmount)
         }
         fetch("http://localhost:5000/purchase", {
             method: 'POST',

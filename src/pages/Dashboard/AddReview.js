@@ -95,12 +95,12 @@ const AddReview = () => {
                                 {errors.review?.type === 'required' && "Review is required"}
                             </p>
                         </div>
-                        {/* <div className="form-control">
+                        <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Image</span>
                             </label>
                             <input
-                                type="file"
+                                type="url"
                                 name="image"
                                 placeholder="Your Image"
                                 className="input input-bordered"
@@ -110,7 +110,7 @@ const AddReview = () => {
                             <p className='text-red-500 text-sm ml-2'>
                                 {errors.image?.type === 'required' && "Image is required"}
                             </p>
-                        </div> */}
+                        </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Add Review</button>
                         </div>

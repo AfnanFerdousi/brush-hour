@@ -18,10 +18,20 @@ const OrderRow = ({ order, index, setDeleteOrder }) => {
                 <>
                 <span className="text-success">Paid</span>
                 <p className='font-bold'>Transaction id: <span className='text-orange-700'>{order?.transactionId}</span></p> 
-                </>
-                               
+                </>                               
             }
             </td>
+            <td>
+            {(order.paid === true && order.pending === false) 
+            ? 
+            <p className='text-green-500 font-bold'>DELIVERED</p> 
+            : (order.paid === false) 
+            ? <p className='text-rede-500'>UNPAID</p>
+            :(order.paid===true && order.pending === true) 
+            && 
+            <button className='btn btn-sm btn-primary'>Pending...</button>}
+            </td>
+            
         </tr >
     );
 };

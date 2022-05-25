@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import DeletingConfirmOrderModal from './DeletingConfirmOrderModal';
 import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrder = () => {
-    const [manageOrder, setManageOrder] = useState([]);
-    
+    const [orders, setManageOrder] = useState([]);  
+    const [order, setOrder] = useState([])
+    const [deleteOrder, setDeleteOrder] = useState(null)  
 
     useEffect(() => {
         const getAllOrders = () => {
@@ -17,7 +19,7 @@ const ManageOrder = () => {
                 .then(data => setManageOrder(data))
         }
         getAllOrders();
-    }, [manageOrder])
+    }, [orders])
     return (
         <div>
             <div className="overflow-x-auto">
@@ -33,13 +35,14 @@ const ManageOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            manageOrder.map((allOrder, index) =>
-                                <ManageOrderRow allOrder={allOrder} key={allOrder._id} index={index}></ManageOrderRow>)
+                            orders.map((allOrder, index, order) =>
+                                <ManageOrderRow setDeleteOrder={setDeleteOrder} order={order} allOrder={allOrder} key={allOrder._id} index={index}></ManageOrderRow>)
                         }
 
                     </tbody>
                 </table>
             </div>
+            {deleteOrder && <DeletingConfirmOrderModal deleteOrder={deleteOrder}></DeletingConfirmOrderModal>}
         </div>
     );
 };

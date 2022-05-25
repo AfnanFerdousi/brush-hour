@@ -55,7 +55,7 @@ const Navbar = ({ children }) => {
                             <li>
                                 {
                                     user ?
-                                            <div className="btn text-white rounded-full">
+                                            <div className="btn sm:mt-3 text-white rounded-full">
                                                 <h2>{user.displayName}</h2>
                                             </div>
                                         :

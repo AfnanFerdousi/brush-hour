@@ -4,7 +4,7 @@ const ManageOrderRow = ({ order,allOrder, index, setDeleteOrder }) => {
 
     const updateStatus = (_id) => {
         console.log(_id)
-        fetch(`http://localhost:5000/pending/${_id}`, {
+        fetch(`https://polar-lowlands-05694.herokuapp.com/pending/${_id}`, {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`

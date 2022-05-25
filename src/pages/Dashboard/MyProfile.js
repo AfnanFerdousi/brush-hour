@@ -12,12 +12,12 @@ const MyProfile = () => {
 
     // console.log(user);
 
-    const {data: profile, isLoading, refetch} = useQuery('myProfile', () => fetch(`http://localhost:5000/user/${user?.email}`).then(res => res.json())
+    const {data: profile, isLoading, refetch} = useQuery('myProfile', () => fetch(`https://polar-lowlands-05694.herokuapp.com/user/${user?.email}`).then(res => res.json())
     )
     // console.log("this is profile",profile);
     useEffect(() => {
         const myProfile = () => {
-            fetch(`http://localhost:5000/user/${user?.email}`, {
+            fetch(`https://polar-lowlands-05694.herokuapp.com/user/${user?.email}`, {
                 method: "GET",
                 "content-type": "application/json",
                 headers: { authorization: `Bearer ${localStorage.getItem("accessToken")}` }

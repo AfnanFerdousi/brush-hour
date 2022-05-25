@@ -15,7 +15,7 @@ const useToken = user =>{
             name: "not added",
         };
         if(email){
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://polar-lowlands-05694.herokuapp.com/user/${email}`, {
                 method:'PUT',
                 headers: {
                     'content-type': 'application/json'

@@ -14,7 +14,7 @@ const AddProduct = () => {
         //     available: data.available,
         //     desc: data.desc
         // }
-        fetch("http://localhost:5000/tools", {
+        fetch("https://polar-lowlands-05694.herokuapp.com/tools", {
             method: 'POST',
             headers: {
                 "content-type":"application/json",

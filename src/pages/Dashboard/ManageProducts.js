@@ -6,7 +6,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
         const getProducts = () => {
-            const url = "http://localhost:5000/tools";
+            const url = "https://polar-lowlands-05694.herokuapp.com/tools";
             fetch(url, {
                 method: "GET",
                 "content-type": "application/json",

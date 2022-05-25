@@ -19,7 +19,7 @@ const MyProfileModal = ({ updateProfile, setUpdateProfile }) => {
             phone: data.phone,
             image: data.image
         }
-        fetch(`http://localhost:5000/myProfile/${user.email}`, {
+        fetch(`https://polar-lowlands-05694.herokuapp.com/myProfile/${user.email}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

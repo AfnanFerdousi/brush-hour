@@ -12,7 +12,7 @@ const Purchase = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
-        const url = `https://polar-lowlands-05694.herokuapp.com/purchase/${id}`;
+        const url = `https://brush-hour-server-ten.vercel.app/purchase/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -33,7 +33,7 @@ const Purchase = () => {
             productName: tool.toolName,
             price: Number(tool.price * data.orderAmount)
         }
-        fetch("https://polar-lowlands-05694.herokuapp.com/purchase", {
+        fetch("https://brush-hour-server-ten.vercel.app/purchase", {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

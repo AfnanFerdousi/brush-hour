@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 
 const AddProduct = () => {
-    const { register,reset, formState: { errors }, handleSubmit } = useForm();
+    const { register, reset, formState: { errors }, handleSubmit } = useForm();
 
     const addProduct = (data) => {
         // const product = {
@@ -14,10 +14,10 @@ const AddProduct = () => {
         //     available: data.available,
         //     desc: data.desc
         // }
-        fetch("https://polar-lowlands-05694.herokuapp.com/tools", {
+        fetch("https://brush-hour-server-ten.vercel.app/tools", {
             method: 'POST',
             headers: {
-                "content-type":"application/json",
+                "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             },
             body: JSON.stringify(data)
@@ -82,10 +82,11 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Minimum Order</span>
                             </label>
-                            <input type="number" placeholder="Minimum Order" className="input input-bordered w-full max-w-xs" 
-                            {...register("minOrder",
-                            { required: true, min: 5, max:100 
-                            })} />
+                            <input type="number" placeholder="Minimum Order" className="input input-bordered w-full max-w-xs"
+                                {...register("minOrder",
+                                    {
+                                        required: true, min: 5, max: 100
+                                    })} />
                             <span className='label-text-alt text-red-500'>
                                 {errors.minOrder?.type === 'required' && "Minimum is required"}
                             </span>
@@ -102,9 +103,9 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Available</span>
                             </label>
-                            <input type="number" placeholder="Available" className="input input-bordered w-full max-w-xs" 
-                            {...register("available",
-                            { required: true, min: 100 })} />
+                            <input type="number" placeholder="Available" className="input input-bordered w-full max-w-xs"
+                                {...register("available",
+                                    { required: true, min: 100 })} />
                             <span className='label-text-alt text-red-500'>
                                 {errors.available?.type === 'required' && "Available is Required"}
                             </span>
@@ -118,9 +119,9 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Description</span>
                             </label>
-                            <input type="text" placeholder="Description" className="input input-bordered w-full max-w-xs" 
-                            {...register("desc",
-                            { required: true })} />
+                            <input type="text" placeholder="Description" className="input input-bordered w-full max-w-xs"
+                                {...register("desc",
+                                    { required: true })} />
                             <span className='label-text-alt text-red-500'>
                                 {errors.desc?.type === 'required' && "Description is Required"}
                             </span>
@@ -131,9 +132,9 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
-                            <input type="url" placeholder="Image" className="input input-bordered w-full max-w-xs" 
-                            {...register("img",
-                            { required: true })} />
+                            <input type="url" placeholder="Image" className="input input-bordered w-full max-w-xs"
+                                {...register("img",
+                                    { required: true })} />
                             <span className='label-text-alt text-red-500'>
                                 {errors.img?.type === 'required' && "Image is Required"}
                             </span>

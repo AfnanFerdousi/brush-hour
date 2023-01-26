@@ -14,7 +14,7 @@ const CheckoutForm = ({ product }) => {
     const { price, buyer, buyerEmail, _id } = product;
 
     useEffect(() => {
-        fetch("https://polar-lowlands-05694.herokuapp.com/create-payment-intent", {
+        fetch("https://brush-hour-server-ten.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -79,7 +79,7 @@ const CheckoutForm = ({ product }) => {
                 product: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://polar-lowlands-05694.herokuapp.com/payment/${_id}`, {
+            fetch(`https://brush-hour-server-ten.vercel.app/payment/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",

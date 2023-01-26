@@ -11,7 +11,7 @@ const MyOrders = () => {
     useEffect(() => {
         const getOrders = () => {
             const email = user.email;
-            const url = `https://polar-lowlands-05694.herokuapp.com/myOrder?email=${email}`
+            const url = `https://brush-hour-server-ten.vercel.app/myOrder?email=${email}`
             fetch(url, {
                 method: "GET",
                 "content-type": "application/json",

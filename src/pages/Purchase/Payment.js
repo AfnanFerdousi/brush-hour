@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L0hrPH2cLojiURK74I446s6HjHcPirYw3vyP
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `https://polar-lowlands-05694.herokuapp.com/payment/${id}`;
+    const url = `https://brush-hour-server-ten.vercel.app/payment/${id}`;
     const { data: product, isLoading } = useQuery(['payment', id], () => fetch(url, {
         method: "GET",
         headers: {
@@ -38,7 +38,7 @@ const Payment = () => {
                 <div className="card w-50 max-w-md bg-yellow-100 mt-6 text-primary-content shadow-xl">
                     <div className="card-body">
                         <Elements stripe={stripePromise}>
-                            <CheckoutForm product={product}/>
+                            <CheckoutForm product={product} />
                         </Elements>
                     </div>
                 </div>

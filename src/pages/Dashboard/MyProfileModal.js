@@ -19,7 +19,7 @@ const MyProfileModal = ({ updateProfile, setUpdateProfile }) => {
             phone: data.phone,
             image: data.image
         }
-        fetch(`https://polar-lowlands-05694.herokuapp.com/myProfile/${user.email}`, {
+        fetch(`https://brush-hour-server-ten.vercel.app/myProfile/${user.email}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

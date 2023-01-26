@@ -5,7 +5,7 @@ const AllTool = () => {
     const [tool, setTool] = useState([]);
 
     useEffect(() => {
-        fetch('https://polar-lowlands-05694.herokuapp.com/tools/home')
+        fetch('https://brush-hour-server-ten.vercel.app/tools/home')
             .then(res => res.json())
             .then(data => setTool(data))
     }, [])

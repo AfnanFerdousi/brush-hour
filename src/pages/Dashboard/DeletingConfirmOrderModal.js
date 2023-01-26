@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeletingConfirmOrderModal = ({ deleteOrder }) => {
     const { _id, productName } = deleteOrder
     const handleDeleteOrder = _id => {
-        fetch(`https://polar-lowlands-05694.herokuapp.com/purchase/${_id}`, {
+        fetch(`https://brush-hour-server-ten.vercel.app/purchase/${_id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`

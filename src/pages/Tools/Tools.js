@@ -5,10 +5,10 @@ import Footer from '../shared/Footer';
 const Tools = () => {
     const [tools, setTools] = useState([]);
     useEffect(() => {
-        fetch('https://polar-lowlands-05694.herokuapp.com/tools')
-        .then(res => res.json())
-        .then(data => setTools(data))
-    },[])
+        fetch('https://brush-hour-server-ten.vercel.app/tools')
+            .then(res => res.json())
+            .then(data => setTools(data))
+    }, [])
     return (
         <div>
             <div className="divider"></div>

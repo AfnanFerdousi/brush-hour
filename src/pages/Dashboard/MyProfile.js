@@ -13,30 +13,30 @@ const MyProfile = () => {
 
     // console.log(user);
 
-    // const {data: profile, isLoading, refetch} = useQuery('myProfile', () => fetch(`https://polar-lowlands-05694.herokuapp.com/user/${user?.email}`).then(res => res.json())
+    // const {data: profile, isLoading, refetch} = useQuery('myProfile', () => fetch(`https://brush-hour-server-ten.vercel.app/user/${user?.email}`).then(res => res.json())
     // )
     // console.log("this is profile",profile);
-         useEffect(() => {
-            const myProfile = () => {
-                fetch(`https://polar-lowlands-05694.herokuapp.com/user/${user?.email}`, {
-                    method: "GET",
-                    headers: { 
-                        "content-type": "application/json",
-                        authorization: `Bearer ${localStorage.getItem("accessToken")}` 
-                    }
-                })
-                    .then(res => res.json())
-                    .then(data => setUsers(data))
-            }
-            myProfile();
-        }, [users]) 
+    useEffect(() => {
+        const myProfile = () => {
+            fetch(`https://brush-hour-server-ten.vercel.app/user/${user?.email}`, {
+                method: "GET",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => setUsers(data))
+        }
+        myProfile();
+    }, [users])
 
     // console.log(users.data);
-        // console.log(profile)
-        // if(isLoading) {
-        //     return <Loading></Loading>
-        // }
-        // refetch();
+    // console.log(profile)
+    // if(isLoading) {
+    //     return <Loading></Loading>
+    // }
+    // refetch();
     return (
         <div className="mt-6 bg-purple-100 flex flex-cols justify-center items-center">
             <div className="card flex items-center flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
@@ -61,7 +61,7 @@ const MyProfile = () => {
                     </div>
                 </div>
             </div>
-            {updateProfile && <MyProfileModal setUpdateProfile={setUpdateProfile} updateProfile={updateProfile}></MyProfileModal>} 
+            {updateProfile && <MyProfileModal setUpdateProfile={setUpdateProfile} updateProfile={updateProfile}></MyProfileModal>}
         </div>
     );
 };

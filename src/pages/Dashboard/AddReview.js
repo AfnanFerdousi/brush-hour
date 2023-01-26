@@ -13,7 +13,7 @@ const AddReview = () => {
             image: data.image
         }
 
-        fetch("https://polar-lowlands-05694.herokuapp.com/review", {
+        fetch("https://brush-hour-server-ten.vercel.app/review", {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

@@ -5,7 +5,7 @@ const Reviews = () => {
     const [review, setReview] = useState([]);
 
     useEffect(() => {
-        fetch('https://polar-lowlands-05694.herokuapp.com/review')
+        fetch('https://brush-hour-server-ten.vercel.app/review')
             .then(res => res.json())
             .then(data => setReview(data))
     }, [])
@@ -15,10 +15,10 @@ const Reviews = () => {
             <h2 className='text-center text-3xl font-bold'>WHAT OUR CUSTOMERS SAY</h2>
             <div className="divider"></div>
             <div className='grid grid-cols-1 lg:grid-cols-4 lg:pl-8 lg:pr-8 gap-y-2 gap-x-2'>
-                 {
-                    review.map(reviewItem => <ReviewCard key={reviewItem._id} 
+                {
+                    review.map(reviewItem => <ReviewCard key={reviewItem._id}
                         review={reviewItem}></ReviewCard>)
-                } 
+                }
             </div>
         </div>
     );

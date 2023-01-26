@@ -4,11 +4,11 @@ import UserRow from './UserRow';
 
 const MakeAdmin = () => {
     const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(); 
+    const [loading, setLoading] = useState();
 
     useEffect(() => {
-        const makeAdmin = () => {  
-            fetch('https://polar-lowlands-05694.herokuapp.com/user', {
+        const makeAdmin = () => {
+            fetch('https://brush-hour-server-ten.vercel.app/user', {
                 method: "GET",
                 "content-type": "application/json",
                 headers: { authorization: `Bearer ${localStorage.getItem("accessToken")}` }

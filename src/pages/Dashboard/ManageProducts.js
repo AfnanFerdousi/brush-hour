@@ -6,7 +6,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
         const getProducts = () => {
-            const url = "https://polar-lowlands-05694.herokuapp.com/tools";
+            const url = "https://brush-hour-server-ten.vercel.app/tools";
             fetch(url, {
                 method: "GET",
                 "content-type": "application/json",
@@ -32,8 +32,8 @@ const ManageProducts = () => {
                     <tbody>
                         {
                             manageProduct.map((product, index) =>
-                                <ManageProductsRow product={product} key={product._id} 
-                                index={index}></ManageProductsRow>)
+                                <ManageProductsRow product={product} key={product._id}
+                                    index={index}></ManageProductsRow>)
                         }
 
                     </tbody>

@@ -3,13 +3,13 @@ import DeletingConfirmOrderModal from './DeletingConfirmOrderModal';
 import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrder = () => {
-    const [orders, setManageOrder] = useState([]);  
+    const [orders, setManageOrder] = useState([]);
     const [order, setOrder] = useState([])
-    const [deleteOrder, setDeleteOrder] = useState(null)  
+    const [deleteOrder, setDeleteOrder] = useState(null)
 
     useEffect(() => {
         const getAllOrders = () => {
-            const url = "https://polar-lowlands-05694.herokuapp.com/purchase";
+            const url = "https://brush-hour-server-ten.vercel.app/purchase";
             fetch(url, {
                 method: "GET",
                 "content-type": "application/json",
